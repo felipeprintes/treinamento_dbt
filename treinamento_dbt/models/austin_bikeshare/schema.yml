@@ -1,0 +1,49 @@
+
+version: 2
+
+models:
+  - name: classics_electrics
+    description: "Tabela com o quantitativo de bikes elétricas e bikes normais disponíveis para alguel"
+    columns:
+      - name: bike_type
+        description: "Irá responder se a bike é elétrica ou normal"
+        tests:
+          - accepted_values:
+              values: ['classic', 'electric']
+          - not_null
+      - name: qtd_bikes
+        description: "Quantidade de bike disponível para locação"
+        tests:
+          - not_null
+
+  - name: most_used
+    description: "Irá apresentar o tipoe de bike mais utilizada para locação"
+    columns:
+      - name: bike_type
+        description: "Irá responder se a bike é elétrica ou normal"
+        tests:
+          - accepted_values:
+              values: ['classic', 'electric']
+      - name: total_minutes 
+        description: "Somatório de minutos rodados por aquele tipo de bike"
+        tests:
+          - not_null
+
+  - name: subscriber_type_bike_jinja
+    description: "Tabela que irá responder quais tipos de bikes usadas em cada tipo de subscriber"
+    columns:
+      - name: subscriber_type
+        description: "Tipo de subscriber"
+        tests:
+          - not_null
+      - name: classic
+        description: "Total de minutos de bikes classicas alugadas para o subscriber em questão"
+        # tests:
+        #   - not_null
+      - name: electric
+        description: "Total de minutos de bikes classicas alugadas para o subscriber em questão"
+        # tests:
+        #   - not_null
+
+  - name: station_closed
+    description: "informação sobre estações fechadas"
